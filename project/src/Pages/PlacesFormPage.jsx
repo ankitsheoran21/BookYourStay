@@ -112,24 +112,25 @@ export default function PlacesFormPage(){
             <AccountNav />
         <form onSubmit={savePlace}>
                     {preInput('Title','Title for your place')}
-                    <input type="text" value={title} onChange={ev => setTitle(ev.target.value)} placeholder="title, for example:My lovely apartment" />
+                    <input required type="text" value={title} onChange={ev => setTitle(ev.target.value)} placeholder="title, for example:My lovely apartment" />
                     {preInput('Address','Address to this place')}
-                    <input type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder="address" />
+                    <input required type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder="address" />
                     {preInput('Photos','The more the better')}
                     <PhotosUploader addedPhotos={addedPhotos} onChange={setAddedPhotos} />
                     {preInput('Description','About this place')}
-                    <textarea value={description} onChange={ev => setDescription(ev.target.value)}/>
+                    <textarea required value={description} onChange={ev => setDescription(ev.target.value)}/>
                     {preInput('Amenities','Select all the perks of your place')}
                     <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
                         <Perks selected={perks} onChange={setPerks}/>
                     </div>
                     {preInput('Extra Info','Additional information about the place')}
-                    <textarea value={extraInfo} onChange={ev => setExtraInfo(ev.target.value)}/>
+                    <textarea required value={extraInfo} onChange={ev => setExtraInfo(ev.target.value)}/>
                     {preInput('Check In, Check Out Time and Max number of Guests','Add Check In time, Check Out time and remember to leave a window for cleaning between Check Out and Check In time')}
                     <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
                         <div>
                             <h3 className="mt-2 -mb-1">Check In Time</h3>
-                            <input type="text" 
+                            <input type="text"
+                                required 
                                 value={checkIn} 
                                 onChange={ev => setCheckIn(ev.target.value)} 
                                 placeholder="14:00"/>
@@ -137,6 +138,7 @@ export default function PlacesFormPage(){
                         <div>
                             <h3 className="mt-2 -mb-1">Check Out Time</h3>
                             <input type="text" 
+                                required
                                 value={checkOut} 
                                 onChange={ev => setCheckOut(ev.target.value)} 
                                 placeholder="11:00"/>
@@ -144,12 +146,14 @@ export default function PlacesFormPage(){
                         <div>
                         <h3 className="mt-2 -mb-1">Max number of guests</h3>
                             <input type="number" 
+                                required
                                 value={maxGuests} 
                                 onChange={ev => setMaxGuests(ev.target.value)} />
                         </div>
                         <div>
                         <h3 className="mt-2 -mb-1">Price per night</h3>
                             <input type="number" 
+                                required
                                 value={price} 
                                 onChange={ev => setPrice(ev.target.value)} />
                         </div>

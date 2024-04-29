@@ -194,4 +194,40 @@ app.get('/bookings', async (req,res) => {
     res.json( await Booking.find({user:userData.id}).populate('place'));
 });
 
+app.delete('/bookings/:bookingId', async (req, res) => {
+    try {
+      const { bookingId } = req.params;
+  
+      // Find the item by ID and delete it
+    const deletedItem = await Booking.findByIdAndDelete(bookingId);
+
+      if (!deletedItem) {
+        return res.status(404).json({ error: 'Item not found' });
+      }
+  
+      res.json({ message: 'Item deleted successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+app.delete('/places/:placeId', async (req, res) => {
+    try {
+      const { placeId } = req.params;
+  
+      // Find the item by ID and delete it
+    const deletedItem = await Place.findByIdAndDelete(placeId);
+
+      if (!deletedItem) {
+        return res.status(404).json({ error: 'Item not found' });
+      }
+  
+      res.json({ message: 'Item deleted successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 app.listen('11203');
